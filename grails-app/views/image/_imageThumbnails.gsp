@@ -1,5 +1,17 @@
 <style>
 
+    .pagination .step {
+        background-color: transparent;
+        border: 0;
+        border-radius: 4px;
+        color: #0695d6;
+        line-height: 1.42857;
+        margin: 0 2px;
+        padding: 10px 17px;
+        position: relative;
+        text-decoration: none;
+    }
+
     .image-caption, .image-thumbnail {
         text-align: center;
     }
@@ -40,9 +52,12 @@
 
 <table style="width: 100%;">
     <tr>
-        <td>
+        <td class="text-center">
             <g:if test="${thumbsTitle}">
-                <h4>${thumbsTitle}</h4>
+                    <div class="h4">
+                        <span class="text-success">${thumbsTitle} </span>
+                        <span>Imágenes encontradas</span>
+                    </div>
             </g:if>
         </td>
         <td>
@@ -90,10 +105,11 @@
 </table>
 
 
-<ul class="thumbnails">
+<div class="row thumbnails">
     <g:each in="${images}" var="image">
-        <li class="span2">
-            <div class="thumbnail" imageId="${image.id}" style="background: white">
+        <div class="col-sm-6 col-md-4">
+            <a class="panel panel-default thumbnail" imageId="${image.id}"
+               href="${createLink(controller:'image', action:'details', id: image.id)}">
                 <g:if test="${allowSelection == true}">
                     <div class="selection-header">
                         <g:checkBox class="chkSelectImage" name="chkSelectImage${image.id}"
@@ -101,24 +117,26 @@
                         <label for="chkSelectImage${image.id}"></label>
                     </div>
                 </g:if>
-                <g:if test="${headerTemplate}">
-                    <g:render template="${headerTemplate}" model="${[image: image]}" />
-                </g:if>
-                <div class="image-thumbnail" >
-                    <a href="${createLink(controller:'image', action:'details', id: image.id)}">
-                        <img src="<img:imageSquareThumbUrl imageId='${image.imageIdentifier}' backgroundColor="white"/>"/>
-                    </a>
+%{--                <g:if test="${headerTemplate}">--}%
+%{--                    <g:render template="${headerTemplate}" model="${[image: image]}" />--}%
+%{--                </g:if>--}%
+                <div class="panel-heading image-thumbnail" style="background-image:url('<img:imageSquareThumbUrl imageId='${image.imageIdentifier}' backgroundColor="white"/>')">
                 </div>
-                <g:if test="${footerTemplate}">
-                    <g:render template="${footerTemplate}" model="${[image: image]}" />
-                </g:if>
-
-            </div>
-        </li>
+                <div class="panel-body">
+                    <h4>${image.title}</h4>
+%{--                    <div class="text-muted">--}%
+%{--                        <p>${image.uploader}</p>--}%
+%{--                    </div>--}%
+                </div>
+%{--                <g:if test="${footerTemplate}" class="panel-body">--}%
+%{--                    <g:render template="${footerTemplate}" model="${[image: image]}" />--}%
+%{--                </g:if>--}%
+            </a>
+        </div>
     </g:each>
-</ul>
+</div>
 
-<div class="pagination">
+<div class="pagination text-center" style="display: block;">
     <g:paginate total="${totalImageCount}" prev="" next="" params="${[q:params.q]}" id="${paginateActionId}" />
 </div>
 

@@ -8,8 +8,8 @@ import org.springframework.web.multipart.MultipartFile
 
 import java.util.regex.Pattern
 
-
-@AlaSecured(value = [CASRoles.ROLE_ADMIN], redirectUri = "/")
+//@AlaSecured(value = [CASRoles.ROLE_ADMIN], redirectUri = "/")
+//@AlaSecured(value = [CASRoles.ROLE_USER, CASRoles.ROLE_ADMIN], anyRole = true, redirectUri = "/")
 class AdminController {
 
     def imageService

@@ -25,10 +25,10 @@ class ImageController {
 
     def index() { }
 
-    @AlaSecured(value = [CASRoles.ROLE_ADMIN], redirectUri = '/')
+//    @AlaSecured(value = [CASRoles.ROLE_ADMIN], redirectUri = '/')
     def upload() { }
 
-    @AlaSecured(value = [CASRoles.ROLE_ADMIN], redirectUri = '/')
+//    @AlaSecured(value = [CASRoles.ROLE_ADMIN], redirectUri = '/')
     def storeImage() {
 
         MultipartFile file = request.getFile('image')
@@ -63,7 +63,7 @@ class ImageController {
         QueryResults<Image> results
 
         params.offset = params.offset ?: 0
-        params.max = params.max ?: 48
+        params.max = params.max ?: 15
         params.sort = params.sort ?: 'dateUploaded'
         params.order = params.order ?: 'desc'
 

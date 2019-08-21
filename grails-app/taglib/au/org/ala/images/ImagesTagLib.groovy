@@ -79,6 +79,7 @@ class ImagesTagLib {
                 mb.div {
                     mb.mkp.yieldUnescaped(bodyContent)
                 }
+
             }
 
         }

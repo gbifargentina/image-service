@@ -113,55 +113,98 @@
 
         <g:layoutHead/>
     </head>
+    <body>
+%{--    <body class="${pageProperty(name: 'body.class')}" id="${pageProperty(name: 'body.id')}" onload="${pageProperty(name: 'body.onload')}">--}%
+%{--        <g:set var="containerClass" value="container"/>--}%
+%{--        <g:if test="${pageProperty(name:'page.useFluidLayout')}">--}%
+%{--            <g:set var="containerClass" value="container-fluid"/>--}%
+%{--        </g:if>--}%
 
-    <body class="${pageProperty(name: 'body.class')}" id="${pageProperty(name: 'body.id')}" onload="${pageProperty(name: 'body.onload')}">
-
-        <g:set var="containerClass" value="container"/>
-        <g:if test="${pageProperty(name:'page.useFluidLayout')}">
-            <g:set var="containerClass" value="container-fluid"/>
-        </g:if>
-
-        <div class="container">
-            <header id="page-header">
-                <div class="container">
-                    <hgroup>
-                        <div class="row-fluid">
-                            <div class="span8">
-                                <g:pageProperty name="page.page-header" />
-                            </div>
-                            <div class="span4">
-                                <div class="pull-right">
-                                    <auth:ifLoggedIn>
-                                        <span id="albums-div" style="display: inline-block"></span>
-                                        <span id="selectionContext" style="display: inline-block"></span>
-                                        <a href="${createLink(controller:'image', action:'stagedImages')}" class="btn btn-small btn-success"><i class="icon-plus icon-white"></i>Upload</a>
-                                    </auth:ifLoggedIn>
-                                    <auth:ifAnyGranted roles="${au.org.ala.web.CASRoles.ROLE_ADMIN}">
-                                        <a href="${createLink(controller:'admin', action:'index')}" class="btn btn-warning btn-small"><i class="icon-cog icon-white"></i>Admin</a>
-                                    </auth:ifAnyGranted>
+        <header id="page-header">
+%{--        <header>--}%
+%{--            <g:pageProperty name="page.page-header" />--}%
+%{--        </header>--}%
+            <div class="panel-pane pane-imagen-destacada">
+                <div class="pane-content">
+                    <section class="jumbotron" style="background-image: url('${grailsApplication.config.headerAndFooter.baseURL}/images/banner.jpg');">
+                        <div class="jumbotron_bar">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ol class="breadcrumb pull-left">
+                                            <li><a href="https://www.argentina.gob.ar">Argentina</a></li>
+                                            <li class="active"><a href="https://www.argentina.gob.ar/educacion">Ministerio de Educación, Cultura, Ciencia y Tecnología</a></li>
+                                            <li class="active"><a href="https://www.argentina.gob.ar/ciencia">Ciencia, Tecnología e Innovación Productiva</a></li>
+                                            <li class="active"><a href="${grailsApplication.config.headerAndFooter.baseURL}">Datos Biológicos</a></li>
+                                            <li class="active"><span>Imágenes</span></li>
+                                        </ol>
+                                        <!--ul class="list-inline pull-right">
+                              <li><a href="#" class="search"><i class="glyphicon glyphicon-search"></i>Buscar en el área</a></li>
+                              <li><a href="#">Institucional</a></li>
+                            </ul-->
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </hgroup>
-                    <g:if test="${flash.message}">
-                        <div class="alert alert-info" role="status">${flash.message}</div>
-                    </g:if>
-
-                    <g:if test="${flash.errorMessage}">
-                        <div class="alert alert-error" role="status">${flash.errorMessage}</div>
-                    </g:if>
+                        <div class="jumbotron_body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
+                                        <h1>${grailsApplication.config.title}</h1>
+                                        <p>${grailsApplication.config.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-            </header>
-        </div>
-        <div class="${containerClass}" id="main-content">
+            </div>
+        </header>
+%{--        <div class="container">--}%
+%{--            <header id="page-header">--}%
+%{--                <div class="container">--}%
+%{--                    <hgroup>--}%
+%{--                        <div class="row-fluid">--}%
+%{--                            <div class="span8">--}%
+%{--                                <g:pageProperty name="page.page-header" />--}%
+%{--                            </div>--}%
+%{--                            <div class="span4">--}%
+%{--                                <div class="pull-right">--}%
+%{--                                    <auth:ifLoggedIn>--}%
+%{--                                        <span id="albums-div" style="display: inline-block"></span>--}%
+%{--                                        <span id="selectionContext" style="display: inline-block"></span>--}%
+%{--                                        <a href="${createLink(controller:'image', action:'stagedImages')}" class="btn btn-small btn-success"><i class="icon-plus icon-white"></i>Upload</a>--}%
+%{--                                    </auth:ifLoggedIn>--}%
+%{--                                    <auth:ifAnyGranted roles="${au.org.ala.web.CASRoles.ROLE_ADMIN}">--}%
+%{--                                        <a href="${createLink(controller:'admin', action:'index')}" class="btn btn-warning btn-small"><i class="icon-cog icon-white"></i>Admin</a>--}%
+%{--                                    </auth:ifAnyGranted>--}%
+%{--                                </div>--}%
+%{--                            </div>--}%
+%{--                        </div>--}%
+%{--                    </hgroup>--}%
+%{--                    <g:if test="${flash.message}">--}%
+%{--                        <div class="alert alert-info" role="status">${flash.message}</div>--}%
+%{--                    </g:if>--}%
+
+%{--                    <g:if test="${flash.errorMessage}">--}%
+%{--                        <div class="alert alert-error" role="status">${flash.errorMessage}</div>--}%
+%{--                    </g:if>--}%
+%{--                </div>--}%
+%{--            </header>--}%
+%{--        </div>--}%
+%{--        <div class="${containerClass}" id="main-content">--}%
+%{--        <main role="main">--}%
+        <div class="container" role="main">
             <g:layoutBody/>
-        </div><!--/.container-->
+        </div>
+%{--        </main>--}%
+%{--        </div><!--/.container-->--}%
 
         <div class="spinner well well-small" style="display: none"></div>
 
-        <div class="container hidden-desktop">
-            <%-- Borrowed from http://marcusasplund.com/optout/ --%>
-            <a class="btn btn-small toggleResponsive"><i class="icon-resize-full"></i> <span>Desktop</span> version</a>
-        </div>
+%{--        <div class="container hidden-desktop">--}%
+%{--            <%-- Borrowed from http://marcusasplund.com/optout/ --%>--}%
+%{--            <a class="btn btn-small toggleResponsive"><i class="icon-resize-full"></i> <span>Desktop</span> version</a>--}%
+%{--        </div>--}%
     </body>
 </g:applyLayout>

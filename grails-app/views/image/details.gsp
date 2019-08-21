@@ -24,23 +24,23 @@
                 pageScope.crumbs = []
             %>
         </img:headerContent>
+
+    <br/>
         <div class="row-fluid">
             <div class="span4">
-                <div id="image-thumbnail">
-                    <ul class="thumbnails">
-                        <li class="span12">
-                            <div class="thumbnail" style="text-align: center">
-                                <g:if test="${isImage}">
-                                <a href="${grailsApplication.config.serverName}${createLink(action:'view', id:imageInstance.id)}">
-                                    <img src="<img:imageThumbUrl imageId="${imageInstance?.imageIdentifier}"/>" />
-                                </a>
-                                </g:if>
-                                <g:if test="${imageInstance.mimeType?.toLowerCase()?.startsWith("audio/")}">
-                                    <audio src="<img:imageUrl imageId="${imageInstance.imageIdentifier}" />"></audio>
-                                </g:if>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="well well-small">
+                    <div id="panel panel-default">
+                        <div class="panel-heading image-thumbnail" style="text-align: center">
+                            <g:if test="${isImage}">
+                            <a href="${grailsApplication.config.serverName}${createLink(action:'view', id:imageInstance.id)}">
+                                <img src="<img:imageThumbUrl imageId="${imageInstance?.imageIdentifier}"/>" />
+                            </a>
+                            </g:if>
+                            <g:if test="${imageInstance.mimeType?.toLowerCase()?.startsWith("audio/")}">
+                                <audio src="<img:imageUrl imageId="${imageInstance.imageIdentifier}" />"></audio>
+                            </g:if>
+                        </div>
+                    </div>
                 </div>
                 <div class="well well-small">
                     <div id="tagsSection">
@@ -217,16 +217,36 @@
 
                                     <tr>
                                         <td colspan="2">
-
-                                            <g:link controller="webService" action="getImageInfo" params="[id:imageInstance.imageIdentifier]" title="View JSON metadata" class="btn btn-small">
-                                                <i class="icon-wrench"> </i>
-                                            </g:link>
-
+                                            <div class="row" style="margin:0px">
+                                                <div class="col-md-4 ">
+                                                    <g:link controller="webService" action="getImageInfo" params="[id:imageInstance.imageIdentifier]" title="View JSON metadata" class="panel panel-default panel-icon">
+                                                        <div class="panel-heading"><i id="fa fa-cloud-download" class="fa fa-cloud-download icono-2x text-gray" data-clipboard-text="fa-cloud-download"></i></div>
+                                                        <div class="panel-body">
+                                                            <h3>JSON</h3>
+                                                        </div>
+                                                    </g:link>
+                                                </div>
                                             <g:if test="${isImage}">
-                                                <button class="btn btn-small" id="btnViewImage" title="View zoomable image"><i class="icon-eye-open"></i></button>
+                                                <div class="col-md-4">
+                                                    <div class="panel panel-default panel-icon" id="btnViewImage" title="View zoomable image">
+                                                        <a class="panel panel-default panel-icon" href="#">
+                                                            <div class="panel-heading"><i id="fa fa-search-plus" class="fa fa-search-plus icono-2x text-gray" data-clipboard-text="fa-search-plus"></i></div>
+                                                            <div class="panel-body">
+                                                                <h3>Zoom</h3>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </g:if>
-                                            <a class="btn btn-small" href="${grailsApplication.config.serverName}${createLink(controller:'image', action:'proxyImage', id:imageInstance.id, params:[contentDisposition: 'true'])}" title="Download full image" target="imageWindow"><i class="icon-download-alt"></i></a>
-
+                                                <div class="col-md-4">
+                                                    <a class="panel panel-default panel-icon" href="${grailsApplication.config.serverName}${createLink(controller:'image', action:'proxyImage', id:imageInstance.id, params:[contentDisposition: 'true'])}" title="Download full image" target="imageWindow">
+                                                            <div class="panel-heading"><i id="fa fa-download" class="fa fa-download icono-2x text-gray" data-clipboard-text="fa-download"></i></div>
+                                                            <div class="panel-body">
+                                                                <h3>Descarga</h3>
+                                                            </div>
+                                                    </a>
+                                                </div>
+                                            </div>
                                             <auth:ifAnyGranted roles="${au.org.ala.web.CASRoles.ROLE_USER}, ${au.org.ala.web.CASRoles.ROLE_USER}">
                                                 <g:if test="${albums}">
                                                     <button class="btn btn-small" title="Add this image to an album" id="btnAddToAlbum"><i class="icon-book"></i></button>

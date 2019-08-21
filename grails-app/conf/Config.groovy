@@ -3,6 +3,8 @@
 \******************************************************************************/
 def appName = 'images'
 def ENV_NAME = "${appName.toUpperCase()}_CONFIG"
+
+//default_config = "C:\\data\\${appName}\\config\\${appName}-config.properties"
 default_config = "/data/${appName}/config/${appName}-config.properties"
 if(!grails.config.locations || !(grails.config.locations instanceof List)) {
     grails.config.locations = []
