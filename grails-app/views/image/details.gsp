@@ -65,20 +65,20 @@
                             <li class="active">
                                 <a href="#tabProperties" data-toggle="tab">${mediaTitle} properties</a>
                             </li>
-                            <li>
-                                <a href="#tabExif" data-toggle="tab">Embedded</a>
-                            </li>
-                            <li>
-                                <a href="#tabUserDefined" data-toggle="tab">User Defined Metadata</a>
-                            </li>
-                            <li>
-                                <a href="#tabSystem" data-toggle="tab">System</a>
-                            </li>
-                            <auth:ifAnyGranted roles="${CASRoles.ROLE_ADMIN}">
-                                <li>
-                                    <a href="#tabAuditMessages" data-toggle="tab">Audit trail</a>
-                                </li>
-                            </auth:ifAnyGranted>
+%{--                            <li>--}%
+%{--                                <a href="#tabExif" data-toggle="tab">Embedded</a>--}%
+%{--                            </li>--}%
+%{--                            <li>--}%
+%{--                                <a href="#tabUserDefined" data-toggle="tab">User Defined Metadata</a>--}%
+%{--                            </li>--}%
+%{--                            <li>--}%
+%{--                                <a href="#tabSystem" data-toggle="tab">System</a>--}%
+%{--                            </li>--}%
+%{--                            <auth:ifAnyGranted roles="${CASRoles.ROLE_ADMIN}">--}%
+%{--                                <li>--}%
+%{--                                    <a href="#tabAuditMessages" data-toggle="tab">Audit trail</a>--}%
+%{--                                </li>--}%
+%{--                            </auth:ifAnyGranted>--}%
                         </ul>
 
                         <div class="tab-content">

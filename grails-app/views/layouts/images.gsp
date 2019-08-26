@@ -120,46 +120,6 @@
 %{--            <g:set var="containerClass" value="container-fluid"/>--}%
 %{--        </g:if>--}%
 
-        <header id="page-header">
-%{--        <header>--}%
-%{--            <g:pageProperty name="page.page-header" />--}%
-%{--        </header>--}%
-            <div class="panel-pane pane-imagen-destacada">
-                <div class="pane-content">
-                    <section class="jumbotron" style="background-image: url('${grailsApplication.config.headerAndFooter.baseURL}/images/banner.jpg');">
-                        <div class="jumbotron_bar">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <ol class="breadcrumb pull-left">
-                                            <li><a href="https://www.argentina.gob.ar">Argentina</a></li>
-                                            <li class="active"><a href="https://www.argentina.gob.ar/educacion">Ministerio de Educación, Cultura, Ciencia y Tecnología</a></li>
-                                            <li class="active"><a href="https://www.argentina.gob.ar/ciencia">Ciencia, Tecnología e Innovación Productiva</a></li>
-                                            <li class="active"><a href="${grailsApplication.config.headerAndFooter.baseURL}">Datos Biológicos</a></li>
-                                            <li class="active"><span>Imágenes</span></li>
-                                        </ol>
-                                        <!--ul class="list-inline pull-right">
-                              <li><a href="#" class="search"><i class="glyphicon glyphicon-search"></i>Buscar en el área</a></li>
-                              <li><a href="#">Institucional</a></li>
-                            </ul-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="jumbotron_body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
-                                        <h1>${grailsApplication.config.title}</h1>
-                                        <p>${grailsApplication.config.description}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </header>
 %{--        <div class="container">--}%
 %{--            <header id="page-header">--}%
 %{--                <div class="container">--}%
@@ -194,9 +154,9 @@
 %{--        </div>--}%
 %{--        <div class="${containerClass}" id="main-content">--}%
 %{--        <main role="main">--}%
-        <div class="container" role="main">
+%{--        <div class="container" role="main">--}%
             <g:layoutBody/>
-        </div>
+%{--        </div>--}%
 %{--        </main>--}%
 %{--        </div><!--/.container-->--}%
 
